@@ -10,7 +10,14 @@ function check(userlogin){
     }
     else{
         return(
-            <h1>Please Login!</h1>
+            <div className="login-box">
+                <h1>Please Login!</h1>
+                <div className="input-container">
+                    <input placeholder="Username" type="text"></input>
+                    <input placeholder="Password" type="password"></input>
+                </div>
+                <button>Login</button>
+            </div>
         )
     }
 }
