@@ -45,7 +45,7 @@ body{
     border-radius: 10px;
     font-size: 24px;
     font-weight: 600;
-    margin-top: 5rem;
+    margin-top: 3rem;
     cursor: pointer;
     background-color: rgb(3, 7, 43);
     color: white;
@@ -54,4 +54,25 @@ body{
 .login-box button:hover{
     background-color: rgba(255, 255, 255, 0.867);
     color: black;
+}
+
+.social{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2.5rem;
+}
+
+.social img{
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 10px;
+    border:1px solid white;
+    padding: .5rem;
+    cursor: pointer;
+}
+
+.social img:hover{
+    border: 2px solid gold;
 }
