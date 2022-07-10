@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import pic1 from "../src/images/fb.png";
 import pic2 from "../src/images/ig.png";
 import pic3 from "../src/images/tw.png";
@@ -6,7 +6,17 @@ import pic3 from "../src/images/tw.png";
 var userlogin = false;
 var userIsregistered = true;
 
-function check(userlogin){
+function Check(userlogin){
+
+    const[ishover,update] = useState(false);
+
+    function mouseOver(){
+        update(true)
+    }
+    function mouseOut(){
+        update(false)
+    }
+
     if(userlogin===true){
         return(
             <h1>Welcome User!</h1>
@@ -28,7 +38,10 @@ function check(userlogin){
                     <img src={pic2} alt="ig"/>
                     <img src={pic3} alt="tw"/>
                 </div>
-                <button>
+                <button style={
+                    {backgroundColor: ishover?"black":"white",color:ishover?"white":"black"}
+                }
+                onMouseOver={mouseOver} onMouseOut={mouseOut}>
                     {userIsregistered?"Login":"Register"}
                 </button>
             </div>
@@ -39,7 +52,7 @@ function check(userlogin){
 function App(){
     return(
         <div className="container">
-            {check(userlogin)}
+            {Check(userlogin)}
         </div>
     )
 }
