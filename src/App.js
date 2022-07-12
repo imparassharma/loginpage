@@ -9,12 +9,17 @@ var userIsregistered = true;
 function Check(userlogin){
 
     const[ishover,update] = useState(false);
+    const [name,setName] = useState("");
 
     function mouseOver(){
         update(true)
     }
     function mouseOut(){
         update(false)
+    }
+
+    function userTyping(event){
+        setName(event.target.value);
     }
 
     if(userlogin===true){
@@ -28,8 +33,9 @@ function Check(userlogin){
                 <h1>
                     {userIsregistered?"Please Login":"Please Register!"}
                 </h1>
+                <p>Hello <span>{name}</span></p>
                 <div className="input-container">
-                    <input placeholder="Username" type="text"></input>
+                    <input placeholder="Username" type="text" onChange={userTyping}></input>
                     <input placeholder="Password" type="password"></input>
                     {userIsregistered?null:<input placeholder="Confirm Password" type="password"></input>}
                 </div>
