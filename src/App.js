@@ -10,7 +10,11 @@ function Check(userlogin){
 
     const[ishover,update] = useState(false);
     const [name,setName] = useState("");
+    const [wait,displayText]= useState("");
 
+    function waitingTime(){
+        displayText("Please Wait...");
+    }
     function mouseOver(){
         update(true)
     }
@@ -29,27 +33,32 @@ function Check(userlogin){
     }
     else{
         return(
-            <div className="login-box">
-                <h1>
-                    {userIsregistered?"Please Login":"Please Register!"}
-                </h1>
-                <p>Hello <span>{name}</span></p>
-                <div className="input-container">
-                    <input placeholder="Username" type="text" onChange={userTyping}></input>
-                    <input placeholder="Password" type="password"></input>
-                    {userIsregistered?null:<input placeholder="Confirm Password" type="password"></input>}
+            <div className="main-login-box">
+                <div className="login-box">
+                    <h1>
+                        {userIsregistered?"Please Login":"Please Register!"}
+                    </h1>
+                    <p>Hello <span>{name}</span></p>
+                    <div className="input-container">
+                        <input placeholder="Username" type="text" onChange={userTyping}></input>
+                        <input placeholder="Password" type="password"></input>
+                        {userIsregistered?null:<input placeholder="Confirm Password" type="password"></input>}
+                    </div>
+                    <div className="social">
+                        <img src={pic1} alt="fb"/>
+                        <img src={pic2} alt="ig"/>
+                        <img src={pic3} alt="tw"/>
+                    </div>
+                    <button style={
+                        {backgroundColor: ishover?"black":"white",color:ishover?"white":"black"}
+                    }
+                    onMouseOver={mouseOver} onMouseOut={mouseOut} onClick={waitingTime}>
+                        {userIsregistered?"Login":"Register"}
+                    </button>
                 </div>
-                <div className="social">
-                    <img src={pic1} alt="fb"/>
-                    <img src={pic2} alt="ig"/>
-                    <img src={pic3} alt="tw"/>
+                <div className="waitingTime">
+                    <p>{wait}</p>
                 </div>
-                <button style={
-                    {backgroundColor: ishover?"black":"white",color:ishover?"white":"black"}
-                }
-                onMouseOver={mouseOver} onMouseOut={mouseOut}>
-                    {userIsregistered?"Login":"Register"}
-                </button>
             </div>
         )
     }
