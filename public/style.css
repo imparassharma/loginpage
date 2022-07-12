@@ -47,6 +47,7 @@ body{
     font-size: 24px;
     font-weight: 600;
     margin-top: 3rem;
+    margin-bottom: 1rem;
     cursor: pointer;
     background-color: rgb(3, 7, 43);
 }
@@ -81,4 +82,16 @@ body{
 
 .social img:hover{
     border: 2px solid black;
+}
+
+.main-login-box{
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+}
+
+.waitingTime{
+    font-size: 48px;
+    color: white;
+    font-weight: 600;
 }
