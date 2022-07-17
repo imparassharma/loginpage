@@ -9,7 +9,8 @@ var userIsregistered = true;
 function Check(userlogin){
 
     const[ishover,update] = useState(false);
-    const [name,setName] = useState("");
+    const [fname,setFName] = useState("");
+    const[lname,setLName] = useState("");
     const [wait,displayText]= useState("");
 
     function waitingTime(){
@@ -22,9 +23,16 @@ function Check(userlogin){
         update(false)
     }
 
-    function userTyping(event){
-        setName(event.target.value);
+    const fullname="";
+
+    function firstName(event){
+        setFName(event.target.value);
     }
+
+    function lastName(event){
+        setLName(" "+event.target.value);
+    }
+
 
     if(userlogin===true){
         return(
@@ -38,9 +46,12 @@ function Check(userlogin){
                     <h1>
                         {userIsregistered?"Please Login":"Please Register!"}
                     </h1>
-                    <p>Hello <span>{name}</span></p>
+                    <p>Hello <span>{fname}{lname}</span></p>
                     <div className="input-container">
-                        <input placeholder="Username" type="text" onChange={userTyping}></input>
+                        {userIsregistered?<input placeholder="Username" type="text" onChange={firstName}></input>:
+                            <><input placeholder="First Name" type="text" onChange={firstName}></input>
+                            <input placeholder="Last Name" type="text" onChange={lastName}></input></>
+                        }
                         <input placeholder="Password" type="password"></input>
                         {userIsregistered?null:<input placeholder="Confirm Password" type="password"></input>}
                     </div>
