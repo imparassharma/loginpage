@@ -4,13 +4,42 @@ import pic2 from "../src/images/ig.png";
 import pic3 from "../src/images/tw.png";
 
 var userlogin = false;
-var userIsregistered = true;
+var userIsregistered = false;
 
 function Check(userlogin){
 
     const[ishover,update] = useState(false);
-    const [fname,setFName] = useState("");
-    const[lname,setLName] = useState("");
+    const [fullname,setfullName] = useState(
+        {
+            fName: "",
+            lName: ""
+        }
+    );
+
+    function handleChange(event)
+    {
+        const value = event.target.value;
+        const parent = event.target.name;
+
+        setfullName(preValue=>{
+            if(parent === "fName"){
+                console.log(preValue.value);
+                return{
+                    fName:value,
+                    lName:preValue.lName
+                }
+            }
+            else if(parent=== "lName"){
+                return{
+                    fName:preValue.fName,
+                    lName:value
+                }
+            }
+        })
+    }
+
+    
+
     const [wait,displayText]= useState("");
 
     function waitingTime(){
@@ -21,16 +50,6 @@ function Check(userlogin){
     }
     function mouseOut(){
         update(false)
-    }
-
-    const fullname="";
-
-    function firstName(event){
-        setFName(event.target.value);
-    }
-
-    function lastName(event){
-        setLName(" "+event.target.value);
     }
 
 
@@ -46,11 +65,11 @@ function Check(userlogin){
                     <h1>
                         {userIsregistered?"Please Login":"Please Register!"}
                     </h1>
-                    <p>Hello <span>{fname}{lname}</span></p>
+                    <p>Hello <span>{fullname.fName}{" "}{fullname.lName}</span></p>
                     <div className="input-container">
-                        {userIsregistered?<input placeholder="Username" type="text" onChange={firstName}></input>:
-                            <><input placeholder="First Name" type="text" onChange={firstName}></input>
-                            <input placeholder="Last Name" type="text" onChange={lastName}></input></>
+                        {userIsregistered?<input placeholder="Username" type="text" name="fName" onChange={handleChange} value={fullname.fName}></input>:
+                            <><input placeholder="First Name" type="text" name = "fName" onChange={handleChange} value={fullname.fName}></input>
+                            <input placeholder="Last Name" type="text" name="lName" onChange={handleChange} value={fullname.lName }></input></>
                         }
                         <input placeholder="Password" type="password"></input>
                         {userIsregistered?null:<input placeholder="Confirm Password" type="password"></input>}
