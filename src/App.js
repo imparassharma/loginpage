@@ -20,20 +20,11 @@ function Check(userlogin){
     {
         const value = event.target.value;
         const parent = event.target.name;
-
         setfullName(preValue=>{
-            if(parent === "fName"){
-                console.log(preValue.value);
-                return{
-                    fName:value,
-                    lName:preValue.lName
-                }
-            }
-            else if(parent=== "lName"){
-                return{
-                    fName:preValue.fName,
-                    lName:value
-                }
+            console.log(preValue);
+            return{
+                ...preValue,
+                [parent] : value
             }
         })
     }
