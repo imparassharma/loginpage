@@ -4,7 +4,7 @@ import pic2 from "../src/images/ig.png";
 import pic3 from "../src/images/tw.png";
 
 var userlogin = false;
-var userIsregistered = false;
+var userIsregistered = true;
 
 function Check(userlogin){
 
